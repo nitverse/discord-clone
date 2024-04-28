@@ -6,7 +6,7 @@ interface layoutProps {
 
 const Authlayout: FC<layoutProps> = ({children}) => {
   return (
-    <div className='bg-red-500 h-full'>
+    <div className='flex flex-col justify-center items-center h-full'>
         {children}
     </div>
   )
