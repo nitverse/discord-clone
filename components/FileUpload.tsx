@@ -22,7 +22,7 @@ const FileUpload: FC<fileUploadProps> = ({ onChange, value, endpoint }) => {
         <Image fill src={value} alt="Upload" className="rounded-full" />
         <button
           onClick={() => onChange('')}
-          className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
+          className="bg-indigo-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
           type="button"
         >
           <X className="h-4 w-4"></X>
