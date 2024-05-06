@@ -66,6 +66,7 @@ const CreateServerModal: FC<CreateServerModalProps> = ({}) => {
 
   const handleClose = () => {
      form.reset();
+     onClose();
   }
   
   return (
