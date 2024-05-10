@@ -1,5 +1,5 @@
 "use client";
-import axios from "axios"
+import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FC, useEffect } from "react";
@@ -38,12 +38,12 @@ const formSchema = z.object({
 });
 
 const EditServerModal: FC<EditServerModalProps> = ({}) => {
-  const { isOpen , onClose , type , data} = useModal();
+  const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
   const isModalOpen = isOpen && type == "editServer";
 
-  const {server} = data;
+  const { server } = data;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -54,17 +54,17 @@ const EditServerModal: FC<EditServerModalProps> = ({}) => {
   });
 
   useEffect(() => {
-      if(server){
-        form.setValue("name" , server.name);
-        form.setValue("imageUrl" , server.imageUrl);
-      }
-  } , [server , form]);
+    if (server) {
+      form.setValue("name", server.name);
+      form.setValue("imageUrl", server.imageUrl);
+    }
+  }, [server, form]);
 
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/servers/${server?.id}` , values);
+      await axios.patch(`/api/servers/${server?.id}`, values);
 
       form.reset();
       router.refresh();
@@ -75,13 +75,13 @@ const EditServerModal: FC<EditServerModalProps> = ({}) => {
   };
 
   const handleClose = () => {
-     form.reset();
-     onClose();
-  }
-  
+    form.reset();
+    onClose();
+  };
+
   return (
     <>
-      <Dialog open = {isModalOpen} onOpenChange={handleClose}>
+      <Dialog open={isModalOpen} onOpenChange={handleClose}>
         <DialogContent className="bg-white text-black p-0 overflow-hidden">
           <DialogHeader className="pt-8 px-6">
             <DialogTitle className="text-2xl text-center font-bold">
@@ -102,9 +102,11 @@ const EditServerModal: FC<EditServerModalProps> = ({}) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <FileUpload endpoint = "serverImage"
-                          value={field.value}
-                          onChange = {field.onChange}/>
+                          <FileUpload
+                            endpoint="serverImage"
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
                         </FormControl>
                       </FormItem>
                     )}
@@ -133,8 +135,12 @@ const EditServerModal: FC<EditServerModalProps> = ({}) => {
                 />
               </div>
               <DialogFooter className="bg-gray-100 px-6 py-4">
-                <Button className="bg-indigo-600 gap-x-2" disabled={isLoading} variant="primary">
-                  <Pen className="h-4 w-4"/>
+                <Button
+                  className="bg-indigo-600 gap-x-2"
+                  disabled={isLoading}
+                  variant="primary"
+                >
+                  <Pen className="h-4 w-4" />
                   Edit Server
                 </Button>
               </DialogFooter>

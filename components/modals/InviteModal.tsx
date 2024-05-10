@@ -45,8 +45,8 @@ const InviteModal: FC<InviteModalProps> = ({}) => {
       const response = await axios.patch(
         `/api/servers/${server?.id}/invite-code`
       );
-      
-      onOpen("invite" , {server: response.data});
+
+      onOpen("invite", { server: response.data });
     } catch (error) {
       console.log(error);
     } finally {
@@ -69,7 +69,7 @@ const InviteModal: FC<InviteModalProps> = ({}) => {
             </Label>
             <div className="flex items-center mt-2 gap-x-2">
               <Input
-                disabled= {isLoading}
+                disabled={isLoading}
                 className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                 value={inviteUrl}
               />

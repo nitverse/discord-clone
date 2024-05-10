@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import CreateServerModal from "../modals/createServerModal";
 import InviteModal from "../modals/InviteModal";
 import EditServerModal from "../modals/EditServerModal";
+import MembersModal from "../modals/MembersModal";
 
 interface ModalProviderProps {}
 
@@ -23,6 +24,7 @@ const ModalProvider: FC<ModalProviderProps> = ({}) => {
       <CreateServerModal />
       <InviteModal />
       <EditServerModal />
+      <MembersModal />
     </div>
   );
 };
