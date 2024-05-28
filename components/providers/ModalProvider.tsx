@@ -5,6 +5,7 @@ import CreateServerModal from "../modals/createServerModal";
 import InviteModal from "../modals/InviteModal";
 import EditServerModal from "../modals/EditServerModal";
 import MembersModal from "../modals/MembersModal";
+import CreateChannelModal from "../modals/CreateChannel";
 
 interface ModalProviderProps {}
 
@@ -25,6 +26,7 @@ const ModalProvider: FC<ModalProviderProps> = ({}) => {
       <InviteModal />
       <EditServerModal />
       <MembersModal />
+      <CreateChannelModal />
     </div>
   );
 };
