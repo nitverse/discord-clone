@@ -7,6 +7,7 @@ import EditServerModal from "../modals/EditServerModal";
 import MembersModal from "../modals/MembersModal";
 import CreateChannelModal from "../modals/CreateChannel";
 import LeaveServerModal from "../modals/LeaveServerModal";
+import DeleteServerModal from "../modals/DeleteServerModal";
 
 interface ModalProviderProps {}
 
@@ -29,6 +30,7 @@ const ModalProvider: FC<ModalProviderProps> = ({}) => {
       <MembersModal />
       <CreateChannelModal />
       <LeaveServerModal />
+      <DeleteServerModal />
     </div>
   );
 };
