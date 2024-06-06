@@ -19,7 +19,7 @@ const ActionTooltip: FC<ActionTooltipProps> = ({label , children , side , align}
                 <TooltipTrigger>
                     {children}
                 </TooltipTrigger>
-                <TooltipContent side={side} align={align}>
+                <TooltipContent className='bg-black rounded-md' side={side} align={align}>
                     <p className='font-semibold text-sm p-2 capitalize'>{label}</p>
                 </TooltipContent>
             </Tooltip>

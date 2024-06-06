@@ -23,7 +23,7 @@ const ModalProvider: FC<ModalProviderProps> = ({}) => {
   }
 
   return (
-    <div>
+    <>
       <CreateServerModal />
       <InviteModal />
       <EditServerModal />
@@ -31,7 +31,7 @@ const ModalProvider: FC<ModalProviderProps> = ({}) => {
       <CreateChannelModal />
       <LeaveServerModal />
       <DeleteServerModal />
-    </div>
+    </>
   );
 };
 
