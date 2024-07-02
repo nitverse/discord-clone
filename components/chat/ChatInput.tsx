@@ -48,7 +48,7 @@ const ChatInput: FC<ChatInputProps> = ({ apiUrl, query, name, type }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>

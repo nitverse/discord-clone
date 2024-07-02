@@ -33,7 +33,7 @@ const formSchema = z.object({
   imageUrl: z.string().min(1, {
     message: "server image is required",
   }),
-});
+}); 
 
 const InitialModal: FC<InitialModalProps> = ({}) => {
   const router = useRouter();
