@@ -9,7 +9,7 @@ export async function GET(req: Request) {
   try {
     const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
-
+    
     const cursor = searchParams.get("cursor");
     const channelId = searchParams.get("channelId");
 
@@ -19,7 +19,9 @@ export async function GET(req: Request) {
       return new NextResponse("Channel Id Missing", { status: 401 });
 
     let messages: Message[] = [];
-    if (cursor) {
+    // console.log("cursor: " , cursor);
+    
+    if (cursor && cursor!=='0') {
       messages = await db.message.findMany({
         take: MESSAGES_BATCH,
         skip: 1,
@@ -39,6 +41,8 @@ export async function GET(req: Request) {
         orderBy: { createdAt: "desc" },
       });
     } else {
+      // console.log("in else : ");
+      
       messages = await db.message.findMany({
         take: MESSAGES_BATCH,
         where: {
@@ -53,6 +57,9 @@ export async function GET(req: Request) {
         },
         orderBy: { createdAt: "desc" },
       });
+
+      // console.log("Messages : " , messages);
+      
     }
 
     let nextCursor = null;
@@ -60,8 +67,7 @@ export async function GET(req: Request) {
     if (messages.length === MESSAGES_BATCH) {
       nextCursor = messages[MESSAGES_BATCH - 1].id;
     }
-    console.log("messages" + messages);
-    
+
     return NextResponse.json({
       items: messages,
       nextCursor,
