@@ -41,8 +41,6 @@ export async function GET(req: Request) {
         orderBy: { createdAt: "desc" },
       });
     } else {
-      // console.log("in else : ");
-      
       messages = await db.message.findMany({
         take: MESSAGES_BATCH,
         where: {
@@ -57,9 +55,8 @@ export async function GET(req: Request) {
         },
         orderBy: { createdAt: "desc" },
       });
-
-      // console.log("Messages : " , messages);
       
+      // console.log("Messages : " , messages);
     }
 
     let nextCursor = null;
