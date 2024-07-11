@@ -55,8 +55,8 @@ const ChatItem: FC<ChatItemProps> = ({
   const router = useRouter();
 
   const onMemberClick = () => {
-    if (member.id === currentMember.id) return;
-    router.push(`/servers/${params?.serverId}/conversation/${member.id}`);
+    // if (member.id === currentMember.id) return;
+    router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
   };
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const ChatItem: FC<ChatItemProps> = ({
   }, [content]);
 
   const fileType = fileUrl?.split(".").pop();
-  console.log("Current Member Role : " + currentMember);
+  // console.log("Current Member Role : " + currentMember);
 
   const isAdmin = member.role === MemberRole.ADMIN;
   const isModerator = member.role === MemberRole.MODERATOR;
@@ -115,13 +115,13 @@ const ChatItem: FC<ChatItemProps> = ({
   return (
     <div className="relative group flex items-center hover:bg-black/5 p-4 transition w-full">
       <div className="group flex gap-x-2 items-start w-full">
-        <div className="cursor-pointer hover:drop-shadow-md transition">
+        <div onClick={onMemberClick} className="cursor-pointer hover:drop-shadow-md transition">
           <UserAvatar src={member.profile.imageUrl} />
         </div>
         <div className="flex flex-col w-full">
           <div className="flex items-center gap-x-2">
             <div className="flex items-center">
-              <p className="font-semibold text-sm hover:underline cursor-poiter">
+              <p onClick={onMemberClick} className="font-semibold text-sm hover:underline cursor-poiter">
                 {member.profile.name}
               </p>
               <ActionTooltip label={member.role}>
